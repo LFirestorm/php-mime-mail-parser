@@ -60,10 +60,7 @@ class Parser
         if (is_resource($this->stream)) {
             fclose($this->stream);
         }
-        // clear the MailParse resource
-        if (is_resource($this->resource)) {
-            mailparse_msg_free($this->resource);
-        }
+        // Do not manually clear MailParse resource. mailparse_msg_free gives segfault error on PHP 7 
     }
 
     /**
